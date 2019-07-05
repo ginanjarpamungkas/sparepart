@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>403 Forbidden</title>
+</head>
+<body>
+
+<p>Directory access is forbidden.</p>
+
+</body>
+</html>
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Welcome extends CI_Controller {
+
+	public function index()
+	{	$data['jual']=$this->db->query('SELECT * FROM jual')->result();
+		$this->load->view('welcome_message',$data);
+	}
+	public function detail()
+	{	$data['input']=$this->db->query('SELECT * FROM spareparts inner join harga on harga.id_sparepart=spareparts.id_sparepart')->result();
+		$this->load->view('welcome',$data);
+	}
+}
